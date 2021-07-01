@@ -1,6 +1,7 @@
 const fs = require('fs');
 module.exports = function getClassObj({
   styleStr,
+  neededSpace,
   givenHtml,
   filePath
 }) {
@@ -19,7 +20,22 @@ module.exports = function getClassObj({
   }
 
   let htmlSections = outputStr.split('</head>');
-  let resultHTML = `${htmlSections[0]}<style is-from-builder>${styleStr}</style>\n</head>${htmlSections[1]}`;
+
+  // Setting the initial space for style tag start
+  let initialEle = htmlSections[0];
+  let spaceCount = 0;
+
+  for (let i = initialEle.length - 1; i > 0; i--) {
+    if (initialEle[i] === ' ') {
+      spaceCount += 1;
+    } else {
+      break;
+    }
+  }
+  initialEle = initialEle.slice(0, initialEle.length - spaceCount);
+
+  // Generating the reult html
+  let resultHTML = `${initialEle}${neededSpace}<style is-from-builder>${styleStr}${neededSpace}</style>\n</head>${htmlSections[1]}`;
 
   fs.writeFileSync(filePath, resultHTML);
 }

@@ -9,9 +9,10 @@ const writeStyles = require('./write-styles');
 module.exports = function builder({ filePath, tabSize, seperator }) {
   const givenHtml = fs.readFileSync(filePath, 'utf-8');
   let classObj = getClassObj({ htmlArr: parser(givenHtml),  seperator });
-  let styleStr = generateStyles({ classObj, tabSize, seperator });
+  let { neededSpace, resultStr }= generateStyles({ classObj, tabSize, seperator });
   writeStyles({
-    styleStr,
+    styleStr: resultStr,
+    neededSpace,
     givenHtml,
     filePath
   });
