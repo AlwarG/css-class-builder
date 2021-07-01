@@ -33,16 +33,21 @@ function activate(context) {
 			fileType = `${fileType}${fileName[i]}`;
 		}
 		fileType = fileType.split('').reverse().join('');
-		
+
 		if (fileType !== 'html') {
 			vscode.window.showErrorMessage('Only HTML files are supported');
 		}
 		let {
 			tabSize
-		} = vscode.workspace.getConfiguration().editor;
+		} = vscode.workspace.getConfiguration().editor || {};
+		let {
+			seperator
+		} = vscode.workspace.getConfiguration()['css-class-builder'] || {};
+
 		builder({
 			filePath: fileName,
-			tabSize
+			tabSize,
+			seperator: seperator || '_'
 		});
 		vscode.window.showInformationMessage('Styles added successfully');
 	});

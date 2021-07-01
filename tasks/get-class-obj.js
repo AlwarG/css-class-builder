@@ -1,6 +1,4 @@
-const seperator = '-';
-
-module.exports = function getClassObj(htmlArr) {
+module.exports = function getClassObj({ htmlArr, seperator }) {
   let classObject = {};
   // Setting the classes from the elements
   function setClasses(obj, givenIndex) {
