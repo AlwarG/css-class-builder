@@ -1,8 +1,26 @@
 {
 	"name": "css-class-builder",
-	"displayName": "CSS-class-builder",
+	"displayName": "CSS class builder",
 	"description": "The Extension which will generate the styles from the given classes",
 	"version": "0.0.1",
+	"publisher": "AlwarG",
+	"license": "MIT",
+	"homepage": "https://github.com/AlwarG/css-class-builder",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/AlwarG/css-class-builder"
+	},
+	"bugs": {
+		"url": "https://github.com/AlwarG/css-class-builder/issues"
+	},
+	"icon": "images/css-image.png",
+	"keywords": [
+		"CSS",
+		"CSS Builder",
+		"Builder",
+		"Class Builder",
+		"CSS Class Builder"
+	],
 	"engines": {
 		"vscode": "^1.57.0"
 	},
